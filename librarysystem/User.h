@@ -8,6 +8,7 @@ private:
     string m_id;
     string m_name;
     string m_psw;
+    int m_sex;
 public:
     User();
     User(string,string,string);

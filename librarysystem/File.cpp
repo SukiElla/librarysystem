@@ -13,6 +13,7 @@ bool File::LoadBook(vector<Book> &books) {
     string name;
     string writer;
     string publisher;
+    string field;
     int year;
     int month;
     int day;
@@ -20,8 +21,8 @@ bool File::LoadBook(vector<Book> &books) {
     int leftnum;
     ifstream fin;
     fin.open("book.data",ios::binary);
-    while(fin >> id >> name >> writer >> publisher >> year >> month >> day >> total >> leftnum) {
-        books.push_back(Book(id,name,writer,publisher,year,month,day,total,leftnum));
+    while(fin >> id >> name >> writer >> publisher >> year >> month >> day >> total >> leftnum >> field) {
+        books.push_back(Book(id,name,writer,publisher,year,month,day,total,leftnum,field));
     }
     fin.close();
     return 1;
@@ -30,7 +31,7 @@ bool File::FlushBook(vector<Book> &books) {
     ofstream fout;
     fout.open("book.data",ios::binary);
     for(auto i = books.begin(); i != books.end(); i++) {
-        fout << i->GetBookID() << " " << i->GetBookName() << " " << i->GetBookWriter() << " " << i->GetBookPublisher() << " " <<i->m_indate.Ryear() << " " << i->m_indate.Rmonth() << " " << i->m_indate.Rday() << " " << i->GetBookTotalnum() << " " << i->GetBookLeftnum() << endl;
+        fout << i->GetBookID() << " " << i->GetBookName() << " " << i->GetBookWriter() << " " << i->GetBookPublisher() << " " <<i->m_indate.Ryear() << " " << i->m_indate.Rmonth() << " " << i->m_indate.Rday() << " " << i->GetBookTotalnum() << " " << i->GetBookLeftnum() << " " << i->GetBookField() << endl;
     }
     fout.close();
     return 1;

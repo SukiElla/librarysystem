@@ -11,6 +11,7 @@ private:
     string m_name;
     string m_writer;
     string m_publisher;
+    string m_field;
 public:
     Date m_indate;
     int m_no;
@@ -23,11 +24,12 @@ public:
     string GetBookName();
     string GetBookWriter();
     string GetBookPublisher();
+    string GetBookField();
     int GetBookTotalnum();
     int GetBookLeftnum();
     Book(string id, string name, string writer, string publisher,int num);
     ~Book();
-    Book(string id,string name,string writer,string publisher,int year,int month,int day,int total,int leftnum);
+    Book(string id,string name,string writer,string publisher,int year,int month,int day,int total,int leftnum,string field);
 };//
 // Created by yl on 2021/5/7.
 //

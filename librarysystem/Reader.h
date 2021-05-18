@@ -8,8 +8,8 @@ using namespace std;
 class Reader : public User
 {
 private:
-    bool m_borrow_able{};
-    int m_borrow_number{};
+    bool m_borrow_able {};
+    int m_borrow_number {};
     vector<Bookrecord> record;
 public:
     void SetAble();

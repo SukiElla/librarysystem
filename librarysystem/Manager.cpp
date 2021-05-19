@@ -155,6 +155,50 @@ void Manager::ReturnBook(string id) {
         }
     }
 }
+void Manager::FindBookField(string field) {
+    int n = field.length();
+    for(Book &b : booklist) {
+        for(int i=0;i<n;i++) {
+            Chinese c1;
+            Chinese c2;
+            wstring w1_str = c1.strToWstr(field);
+            string temp = b.GetBookName();
+            wstring w2_str = c2.strToWstr(temp);
+            if(temp.find(field) != temp.npos) {
+                b.flag++;
+            }
+        }
+    }
+    for(Book &b : booklist) {
+        if(b.flag != 0) {
+            //cout << b.GetBookID() << b.GetBookName() << b.GetBookWriter() << b.GetBookPublisher();
+            //b.m_indate.Display();
+            //cout << b.GetBookTotalnum() << b.GetBookLeftnum() << endl;
+        }
+    }
+}
+void Manager::FindBookWriter (string writer) {
+    int n = writer.length();
+    for(Book &b : booklist) {
+        for(int i=0;i<n;i++) {
+            Chinese c1;
+            Chinese c2;
+            wstring w1_str = c1.strToWstr(writer);
+            string temp = b.GetBookName();
+            wstring w2_str = c2.strToWstr(temp);
+            if(temp.find(writer) != temp.npos) {
+                b.flag++;
+            }
+        }
+    }
+    for(Book &b : booklist) {
+        if(b.flag != 0) {
+            //cout << b.GetBookID() << b.GetBookName() << b.GetBookWriter() << b.GetBookPublisher();
+            //b.m_indate.Display();
+            //cout << b.GetBookTotalnum() << b.GetBookLeftnum() << endl;
+        }
+    }
+}
 //
 // Created by yl on 2021/5/11.
 //

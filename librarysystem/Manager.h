@@ -23,9 +23,11 @@ public:
     static Ladmin* FindAdmin(string id);
     static bool RemoveAdmin(string id);
     static bool AddAdmin(string id,string name,string psw,int sex);
-    static void FindBookName(string name);
     static Book* BorrowBook(string id);
     static void ReturnBook(string id);
+    static void FindBookField(string field);
+    static void FindBookWriter(string writer);
+    static void FindBookName(string name);
 };
 
 //

@@ -7,6 +7,8 @@ using namespace std;
 class File
 {
 public:
+    bool LoadRecord(Reader &r,vector<Bookrecord> &record);
+    static bool FlushRecord(Reader &r,vector<Bookrecord> &record);
     bool LoadReader(vector<Reader> &readers);
     static bool FlushReader(vector<Reader> &readers);
     bool LoadAdmin(vector<Ladmin> &ladmins);

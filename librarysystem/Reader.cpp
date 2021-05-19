@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <ctime>
 using namespace std;
-void Find()
+/*void Find()
 {
     string name;
     cout << "请输入您要查询的书籍名" << endl;
@@ -16,8 +16,8 @@ void Find()
     Manager::FindBookName(name);
     cout << "按任意键返回" << endl;
     system("pause");
-}
-void Reader::ShowMenu()
+}*/
+/*void Reader::ShowMenu()
 {
     system("cls");
     cout << "=============================欢迎使用图书管理系统：==========================" << endl;
@@ -64,21 +64,20 @@ void Reader::ShowMenu()
             break;
         default:break;
     }
-}
-Reader::Reader(string id, string name, string psw):User(id,name,psw) {
+}*/
+Reader::Reader(string id, string name, string psw,int sex):User(id,name,psw,sex) {
     this->SetAble();
     this->SetNUmber();
 }
 Reader::Reader()= default;
 Reader::~Reader() = default;
 bool Reader::pay() {
-    cout << "欠款已结清，按任意键返回" << endl;
+    //cout << "欠款已结清，按任意键返回" << endl;
     m_borrow_able = 1;
-    ShowMenu();
+    //ShowMenu();
 }
-bool Reader::GetState() {
-    return m_borrow_able;
-}
+int Reader::GetState() { return m_borrow_able; }
+int Reader::GetNumber() { return  m_borrow_number; }
 Reader::Reader(bool o,int a){}
 void Reader::SetAble() { m_borrow_able = 1; }
 void Reader::SetNUmber() { m_borrow_number  = 10; }
@@ -87,7 +86,11 @@ void Reader::Init() {
     ofstream fout;
     if((access(s.c_str(),F_OK) == -1)) { fout.open(s.c_str()); fout.close(); }
 }
-void Reader::LoadRecord() {
+Reader::Reader(string id, string name, string psw, int sex, bool borrow_able, int borrow_number) : User(id,name,psw,sex){
+    m_borrow_able = borrow_able;
+    m_borrow_number = borrow_number;
+}
+/*void Reader::LoadRecord() {
     string s = GetName()+".data";
     ifstream fin;
     fin.open(s.c_str());
@@ -100,7 +103,7 @@ void Reader::LoadRecord() {
         record.push_back(Bookrecord(id,name,writer,byear,bmonth,bday,ryear,rmonth,rday));
     }
     fin.close();
-}
+}*/
 void Reader::CheckRecord() {
     time_t now = time(0);
     tm *ltm = localtime(&now);
@@ -114,7 +117,7 @@ void Reader::CheckRecord() {
         m_borrow_able = false;
     }
 }
-void Reader::FlushRecord() {
+/*void Reader::FlushRecord() {
     string s  = GetName()+".data";
     ofstream fout;
     fout.open(s.c_str());
@@ -123,14 +126,14 @@ void Reader::FlushRecord() {
     }
     fout.close();
     return;
-}
+}*/
 bool Reader::FindBook(string name) {
     Manager::FindBookName(name);
 }
 bool Reader::BorrowBook() {
-    string id;
-    cout << "请输入图书编号" << endl;
-    cin >> id;
+    /*string id;
+    //cout << "请输入图书编号" << endl;
+    //cin >> id;
     time_t now = time(0);
     tm *ltm = localtime(&now);
     Date n(ltm->tm_year+1900,1+ltm->tm_mon,ltm->tm_mday);
@@ -140,20 +143,20 @@ bool Reader::BorrowBook() {
         m_borrow_number--;
     }
     return 1;
-
+     */
 }
 void Reader::ShowRecord() {
-    cout << "id" <<" name " <<"writer" << "publisher" << endl;
+    //cout << "id" <<" name " <<"writer" << "publisher" << endl;
     for(Bookrecord &r : record) {
-        cout << r.m_id << r.m_name << r.m_writer;
+        /*cout << r.m_id << r.m_name << r.m_writer;
         r.m_bdate.Display();
-        r.m_rdate.Display();
+        r.m_rdate.Display();*/
     }
 }
 bool Reader::ReturnBook() {
     string id;
-    cout << "请输入图书编号" << endl;
-    cin >> id;
+    //cout << "请输入图书编号" << endl;
+    //cin >> id;
     int flag = 0;
     for(auto i = record.begin(); i != record.end(); i++) {
         if(i->m_id == id) {
@@ -164,7 +167,7 @@ bool Reader::ReturnBook() {
         }
     }
     if(flag == 0) {
-        cout << "查不到此书的借阅信息" << endl;
+        //cout << "查不到此书的借阅信息" << endl;
     }
 }
 //

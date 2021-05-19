@@ -27,7 +27,7 @@ public:
     string GetBookField();
     int GetBookTotalnum();
     int GetBookLeftnum();
-    Book(string id, string name, string writer, string publisher,int num);
+    Book(string id, string name, string writer, string publisher,int num,string field);
     ~Book();
     Book(string id,string name,string writer,string publisher,int year,int month,int day,int total,int leftnum,string field);
 };//

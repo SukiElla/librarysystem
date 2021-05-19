@@ -14,12 +14,12 @@ Date::Date(const Date& t)
     m_month = t.m_month;
     m_day = t.m_day;
 }
-void Date::Display()
+/*void Date::Display()
 {
     cout<<m_year<<"年";
     cout<<m_month<<"月";
     cout<<m_day<<"日";
-}
+}*/
 bool Date::operator>(const Date& d)
 {
     if(m_year > d.m_year) return true;

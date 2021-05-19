@@ -13,7 +13,6 @@ public:
     Date(int,int,int);
     Date(const Date& t);
     ~Date();
-    void Display();
     bool Isleapyear(int year);
     bool operator>(const Date& d);
     int Getday(int year,int month);
@@ -22,7 +21,7 @@ public:
     int Ryear();
     int Rmonth();
     int Rday();
-
+    //void Display();
 };
 //
 // Created by yl on 2021/5/7.

@@ -6,7 +6,7 @@ class Ladmin : public User {
 public:
     void ShowMenu();
     Ladmin();
-    Ladmin(string id,string name,string psw);
+    Ladmin(string id,string name,string psw,int sex);
     ~Ladmin();
     void GetUsers();
     static void GetBooks();

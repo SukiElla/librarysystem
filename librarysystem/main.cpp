@@ -14,21 +14,21 @@ void Init() {
     file.LoadReader(Manager::readerlist);
     file.LoadAdmin(Manager::ladminlist);
     file.LoadBook(Manager::booklist);
-    cout << "请输入命令" <<endl;
+/*    cout << "请输入命令" <<endl;
     int command = -1;
     cin >> command;
     while (command != 1 && command != 2 && command != 3) {
         cout << "命令输入有误，请重新输入" << endl;
         cout << "请输入命令" <<endl;
         cin>>command;
-    }
+    }*/
     string id;
     string psw;
     string ppsw;
     string name;
     Reader *reader = nullptr;
     Ladmin *ladmin = nullptr;
-    switch (command) {
+/*    switch (command) {
         case 1:
             cout << "请输入账号" << endl;
             cin>>id;
@@ -88,7 +88,7 @@ void Init() {
             cout << "注册成功，按任意键返回" << endl;
             system("pause");
             Init();
-            break;
+            break;/*
     }
 }
 void Refresh()
@@ -97,9 +97,6 @@ void Refresh()
     File::FlushReader(Manager::readerlist);
     File::FlushAdmin(Manager::ladminlist);
     File::FlushBook(Manager::booklist);
-    f.LoadReader(Manager::readerlist);
-    f.LoadAdmin(Manager::ladminlist);
-    f.LoadBook(Manager::booklist);
 }
 int main() {
     cout<<"正在初始化..."<<endl;
@@ -107,5 +104,8 @@ int main() {
     file.Init();
     cout<<"初始化完成"<<endl;
     Init();
-    return 0;
+    return 0;*/
+}
+int main() {
+    cout << "yes" << endl;
 }

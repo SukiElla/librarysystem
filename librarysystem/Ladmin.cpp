@@ -10,12 +10,13 @@ void AddAdmin()
     string id;
     string name;
     string psw;
-    cout << "输入id name psw" << endl;
-    cin >> id >> name >> psw;
+    int sex;
+    //cout << "输入id name psw" << endl;
+    //cin >> id >> name >> psw;
     if(Manager::FindAdmin(id)) cout << "has exist" << endl;
-    else Manager::AddAdmin(id,name,psw);
-    cout << "success" << endl;
-    cout << "go to the main menu" << endl;
+    else Manager::AddAdmin(id,name,psw,sex);
+    //cout << "success" << endl;
+    //cout << "go to the main menu" << endl;
 }
 void AddBook()
 {
@@ -23,15 +24,16 @@ void AddBook()
     string name;
     string writer;
     string publisher;
+    string field;
     int num;
-    cout << "输入id name writer publisher num" << endl;
-    cin >> id >> name >> writer >> publisher >> num;
+    //cout << "输入id name writer publisher num" << endl;
+    //cin >> id >> name >> writer >> publisher >> num;
     if(Manager::FindBook(id)) Manager::AddOldBook(id,num);
-    else Manager::AddNewBook(id,name,writer,publisher,num);
-    cout << "success" << endl;
-    cout << "go to the main menu" << endl;
+    else Manager::AddNewBook(id,name,writer,publisher,num,field);
+    //cout << "success" << endl;
+    //cout << "go to the main menu" << endl;
 }
-void Ladmin::ShowMenu() {
+/*void Ladmin::ShowMenu() {
     system("cls");
     cout << "==========================欢迎使用图书馆后台管理系统：==========================" << endl;
     cout << "                              1.新书录入" << endl;
@@ -83,7 +85,7 @@ void Ladmin::ShowMenu() {
             break;
         default:break;
     }
-}
+}*/
 void Ladmin::GetUsers()  {
     cout << "ID" <<"        "<< "姓名" <<"         "<< "当前状态" << endl;
     for(auto & i : Manager::readerlist) {
@@ -92,21 +94,20 @@ void Ladmin::GetUsers()  {
         else cout <<"不可借";
         cout << endl;
     }
-    cout << "按任意键返回主菜单" << endl;
-    system("pause");
-    ShowMenu();
+    //cout << "按任意键返回主菜单" << endl;
+    //system("pause");
+    //ShowMenu();
 }
 void Ladmin::GetBooks() {
-    cout << "ID     书名            作者           出版社       入库日期     馆藏数量   余量" << endl;
+    //cout << "ID     书名            作者           出版社       入库日期     馆藏数量   余量" << endl;
     for(auto & i : Manager::booklist) {
-        cout << i.GetBookID() << i.GetBookName() << i.GetBookWriter() << i. GetBookPublisher();
-        i.m_indate
-        .Display();
-        cout << i.GetBookTotalnum() << i. GetBookLeftnum() << endl;
+        //cout << i.GetBookID() << i.GetBookName() << i.GetBookWriter() << i. GetBookPublisher();
+        //i.m_indate.Display();
+        //cout << i.GetBookTotalnum() << i. GetBookLeftnum() << endl;
     }
 }
 Ladmin::Ladmin() = default;
-Ladmin::Ladmin(string id, string name, string psw):User(std::move(id),std::move(name),std::move(psw)) {}
+Ladmin::Ladmin(string id, string name, string psw,int sex):User(id,name,psw,sex) {}
 Ladmin::~Ladmin() = default;
 //
 // Created by yl on 2021/5/15.

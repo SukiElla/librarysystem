@@ -8,14 +8,18 @@ public:
     string m_id;
     string m_name;
     string m_writer;
+    string m_publisher;
+    string m_field;
     Date m_bdate;
     Date m_rdate;
     Bookrecord(){}
     ~Bookrecord(){}
-    Bookrecord(string id,string name,string writer,int byear,int bmonth,int bday,int ryear,int rmonth,int rday) : m_bdate(byear,bmonth,bday),m_rdate(ryear,rmonth,rday) {
+    Bookrecord(string id,string name,string writer,int byear,int bmonth,int bday,int ryear,int rmonth,int rday,string publisher,string field) : m_bdate(byear,bmonth,bday),m_rdate(ryear,rmonth,rday) {
         m_id = id;
         m_name = name;
         m_writer = writer;
+        m_publisher = publisher;
+        m_field = field;
     }
 };
 #endif //LIBRARYSYSTEM_BOOKRECORD_H

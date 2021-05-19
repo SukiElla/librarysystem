@@ -11,11 +11,12 @@ private:
     int m_sex;
 public:
     User();
-    User(string,string,string);
+    User(string id,string name,string psw,int sex);
     ~User();
     string GetID();
     string GetName();
     string GetPsw();
+    int GetSex();
 };
 //
 // Created by yl on 2021/5/11.

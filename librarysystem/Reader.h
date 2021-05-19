@@ -19,18 +19,21 @@ public:
     bool BorrowBook();
     bool FindBook(string);
     bool pay();
-    void ShowMenu();
-    bool GetState();
+    //void ShowMenu();
+    int GetState();
+    int GetNumber();
     void ShowRecord();
     Reader();
-    Reader(string id,string name,string psw);
+    Reader(string id,string name,string psw,int sex);
+    Reader(string id,string name,string psw,int sex,bool borrow_able,int borrow_number);
     Reader(bool,int);
     ~Reader();
-    void LoadRecord();
     void CheckRecord();
-    void FlushRecord();
     void Init();
-};//
+    //void FlushRecord();
+    //void LoadRecord();
+};
+//
 // Created by yl on 2021/5/7.
 //
 #endif //LIBRARYSYSTEM_READER_H

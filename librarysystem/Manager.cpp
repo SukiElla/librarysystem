@@ -17,7 +17,7 @@ Book * Manager::FindBook(string id) {
     }
     return nullptr;
 }
-bool Manager::AddNewBook(string id, string name, string writer, string publisher,int num) {
+bool Manager::AddNewBook(string id, string name, string writer, string publisher,int num,string field) {
     for( Book &b : booklist)
     {
         if(b.GetBookID() == id)
@@ -25,7 +25,7 @@ bool Manager::AddNewBook(string id, string name, string writer, string publisher
             return false;
         }
     }
-    booklist.push_back(Book(id,name,writer,publisher,num));
+    booklist.push_back(Book(id,name,writer,publisher,num,field));
     booklist.back().m_no = int(booklist.size());
     return true;
 }
@@ -61,7 +61,7 @@ Reader* Manager::FindReader(string id) {
     }
     return NULL;
 }
-bool Manager::AddReader(string id, string name, string psw)
+bool Manager::AddReader(string id, string name, string psw,int sex)
 {
     for( Reader &r : readerlist)
     {
@@ -69,7 +69,7 @@ bool Manager::AddReader(string id, string name, string psw)
             return false;
         }
     }
-    readerlist.push_back( Reader(id,name,psw));
+    readerlist.push_back( Reader(id,name,psw,sex));
     readerlist.back().m_no = int(readerlist.size());
     return true;
 }
@@ -103,13 +103,13 @@ bool Manager::RemoveAdmin(string id) {
     }
     return flag;
 }
-bool Manager::AddAdmin(string id, string name, string psw) {
+bool Manager::AddAdmin(string id, string name, string psw,int sex) {
     for(Ladmin & a : ladminlist) {
         if(a.GetID() == id) {
             return false;
         }
     }
-    ladminlist.push_back(Ladmin(id,name,psw));
+    ladminlist.push_back(Ladmin(id,name,psw,sex));
 }
 void Manager::FindBookName(string name) {
     int n = name.length();
@@ -127,9 +127,9 @@ void Manager::FindBookName(string name) {
     }
     for(Book &b : booklist) {
         if(b.flag != 0) {
-            cout << b.GetBookID() << b.GetBookName() << b.GetBookWriter() << b.GetBookPublisher();
-            b.m_indate.Display();
-            cout << b.GetBookTotalnum() << b.GetBookLeftnum() << endl;
+            //cout << b.GetBookID() << b.GetBookName() << b.GetBookWriter() << b.GetBookPublisher();
+            //b.m_indate.Display();
+            //cout << b.GetBookTotalnum() << b.GetBookLeftnum() << endl;
         }
     }
 }
@@ -138,7 +138,7 @@ Book* Manager::BorrowBook(string id) {
     for(Book &b : booklist) {
         if(b.GetBookID() == id) {
             if(b.GetBookLeftnum() == 0) {
-                cout << "无剩余书籍" << endl;
+                return 0;
             } else {
                 b.m_leftnum--;
                 flag = 1;
@@ -146,15 +146,12 @@ Book* Manager::BorrowBook(string id) {
             }
         }
     }
-    if(flag == 0) {
-        cout << "无此书信息" << endl;
-    }
 }
 void Manager::ReturnBook(string id) {
     for(Book &b : booklist) {
         if(b.GetBookID() == id){
             b.m_leftnum++;
-            cout << "还书成功" << endl;
+            //cout << "还书成功" << endl;
         }
     }
 }

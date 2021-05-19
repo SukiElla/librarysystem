@@ -28,13 +28,14 @@ int Book::GetBookTotalnum() {return m_totalnum; }
 int Book::GetBookLeftnum() { return m_leftnum; }
 time_t now = time(0);
 tm *ltm = localtime(&now);
-Book::Book(string id, string name, string writer, string publisher,int num): m_indate(ltm->tm_year+1900,1+ltm->tm_mon,ltm->tm_mday)
+Book::Book(string id, string name, string writer, string publisher,int num,string field): m_indate(ltm->tm_year+1900,1+ltm->tm_mon,ltm->tm_mday)
 {
     m_id = id;
     m_name = name;
     m_writer = writer;
     m_publisher = publisher;
     m_totalnum = num;
+    m_field = field;
 }
 //
 // Created by yl on 2021/5/7.
